@@ -507,7 +507,7 @@ public class DefaultRequestCoordinator extends AbstractRequestCoordinator implem
                 Cookie cookie = FrameworkUtils.getAuthCookie(request);
 
                 if (cookie != null) {
-                    String sessionContextKey = DigestUtils.sha256Hex(cookie.getValue());
+                    String sessionContextKey = DigestUtils.shaHex(cookie.getValue());
                     context.setSessionIdentifier(sessionContextKey);
                 }
 
@@ -610,7 +610,7 @@ public class DefaultRequestCoordinator extends AbstractRequestCoordinator implem
                         .getValue());
             }
 
-            String sessionContextKey = DigestUtils.sha256Hex(cookie.getValue());
+            String sessionContextKey = DigestUtils.shaHex(cookie.getValue());
 
             // get the authentication details from the cache
             SessionContext sessionContext = FrameworkUtils.getSessionContextFromCache(sessionContextKey);
